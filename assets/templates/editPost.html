@@ -1,0 +1,20 @@
+<div class="card text-white bg-secondary mb-3" ng-class="{ 'hidden' : !$ctrl.fieldValue.value.title }"  style="cursor: pointer" ng-switch="$ctrl.editMode">
+	<div class="card-header">
+	    <div class="form-group" ng-switch-when="true" >
+		    <input class="card-title form-control" type="text" ng-model="$ctrl.fieldValue.value.title">
+		</div>
+		<h5 class="card-title" ng-switch-default>{{$ctrl.fieldValue.value.title}}</h5>
+	</div>
+  <div class="card-body">
+    
+	  <div class="form-group">
+	    <textarea class="form-control" rows="3" ng-switch-when="true" type="text" ng-model="$ctrl.fieldValue.value.body"></textarea>
+	  	<p class="card-text" ng-switch-default>{{ $ctrl.fieldValue.value.body }}</p>
+	  </div>
+  </div>
+  <div class="card-footer">
+	<button ng-click="$ctrl.handleModeChange()" class="btn btn-success">{{$ctrl.editMode ? 'Save' : 'Edit'}}</button>
+	<button ng-if="$ctrl.editMode" ng-click="$ctrl.reset()" class="btn btn-default">Cancel</button>
+	<button ng-if="!$ctrl.editMode" class="btn btn-danger" ng-click="$ctrl.onDelete({comment: $ctrl.fieldValue.value})">Delete</button>
+  </div>
+</div>

@@ -30,6 +30,7 @@
     <script type="text/javascript" src="http://localhost/posts/assets/js/post/postList.js"></script>
     <script type="text/javascript" src="http://localhost/posts/assets/js/post/postDetail.js"></script>
     <script type="text/javascript" src="http://localhost/posts/assets/js/post/postAdd.js"></script>
+    <script type="text/javascript" src="http://localhost/posts/assets/js/post/commentAdd.js"></script>
     <script type="text/javascript" src="http://localhost/posts/assets/js/post/postComment.js"></script>
     <!-- <script type="text/javascript" src="http://localhost/posts/assets/js/directives/directives.js"></script> -->
     <!-- <script type="text/javascript" src="http://localhost/posts/assets/js/controllers/main.js"></script> -->
@@ -40,7 +41,7 @@
     <![endif]-->
   </head>
  
-  <body ng-app="postApp">
+  <body ng-app="postApp" style="overflow-y: hidden">
     <post-list></post-list>
   </body>
 

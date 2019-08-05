@@ -1,0 +1,16 @@
+<div class="card text-white bg-secondary mb-3"  style="cursor: pointer" >
+	<div class="card-header">
+	    <div class="form-group" >
+		    <input class="card-title form-control" type="text" ng-model="$ctrl.newValue.value.title">
+		</div>
+	</div>
+  <div class="card-body">
+	  <div class="form-group">
+	    <textarea class="form-control" rows="3" type="text" ng-model="$ctrl.newValue.value.body"></textarea>
+	  </div>
+  </div>
+  <div class="card-footer">
+	<button ng-click="$ctrl.onSave()" class="btn btn-success">Save</button>
+	<button ng-if="$ctrl.editMode" ng-click="$ctrl.reset()" class="btn btn-default">Cancel</button>
+  </div>
+</div>

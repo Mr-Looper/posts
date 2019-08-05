@@ -3,6 +3,7 @@
 function PostDetailController($scope, $element, $attrs, $http) {
   var ctrl = this;
   ctrl.update = function(prop, value) {
+    console.log(prop, value);
     ctrl.onUpdate({post: ctrl.post, prop: prop, value: value});
   };
   ctrl.clickPost = function(item) {
@@ -16,8 +17,8 @@ angular.module('postApp').component('postDetail', {
   bindings: {
     post: '=',
     onClick: '&',
-    onDelete: '&',
-    onUpdate: '&'
+    onDeletecomment: '&',
+    onUpdatecomment: '&'
   }
 });
 })(window.angular);
