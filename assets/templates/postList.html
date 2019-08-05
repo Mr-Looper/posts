@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-xs-6 col-lg-4 full-height">
+		<div class="container" style="padding: 5px; height: 60px;">
+			<h3>
+				Posts 
+				<button class="btn btn-success" style="float: right">+ Add</button>
+				<button class="btn btn-success" ng-class="{ 'hidden' : hidden }" style="float: right; margin-right: 10px">Answer</button>
+			</h3>
+			</div>
+		<post-detail ng-repeat="post in $ctrl.list" post="post" on-click="$ctrl.showBody(post)" on-delete="$ctrl.deletePost(post)" on-update="$ctrl.updatePost(post, prop, value)"></post-detail>
+	</div>
+	<div class="col-xs-6 col-lg-8 full-height" id="comments" style="padding-top: 20px;">
+		<div class="col-xs-12">
+			<div class="card text-white bg-secondary mb-3" ng-class="{ 'hidden' : hidden }"  style="cursor: pointer">
+				<div class="card-header">{{$ctrl.postClicked.title}}</div>
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<p class="card-text">{{$ctrl.postClicked.body}}</p>
+			  	</div>
+			 <!--  Location: <editable-field field-value="{{$ctrl.post.title}}" field-type="text" on-update="$ctrl.update('title', value)"></editable-field><br>
+			  <button class="btn btn-primary" ng-click="$ctrl.onDelete({post: $ctrl.post})">Delete</button> -->
+			</div>
+		</div>
+		<b>Comments</b><br>
+		<post-comment ng-repeat="comment in $ctrl.listComment" comment="comment"></post-comment>
+	</div>
+</div>
