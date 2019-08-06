@@ -1,6 +1,6 @@
 <div class="card bg-light mb-3" ng-switch="$ctrl.editMode">
 	<div class="card bg-light mb-3">
-	  <div class="card-header">{{$ctrl.fieldValue.value.email}}</div>
+	  <div class="card-header">By {{ $ctrl.fieldValue.value.email }}</div>
 	  <div class="card-body">
 	    <h5 class="card-title" ng-switch-default>{{$ctrl.fieldValue.value.name}}</h5>
 	    <div class="form-group" ng-switch-when="true" >

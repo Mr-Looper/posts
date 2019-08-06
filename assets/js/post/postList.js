@@ -26,6 +26,16 @@ function PostListController($scope, $element, $attrs, $http) {
   }).then(function(data) {
     ctrl.list = data.data;
   });
+  $http({
+    url: "https://jsonplaceholder.typicode.com/users",
+    method: "GET",
+    headers: {
+      "Content-type": "application/json"
+    },
+    responseType: "json"
+  }).then(function(data) {
+    ctrl.listUsers = data.data;
+  });
   ctrl.handleModeChange = function() {
     if (ctrl.editMode) {
       ctrl.onUpdatecomment(ctrl.fieldValue);
@@ -74,24 +84,26 @@ function PostListController($scope, $element, $attrs, $http) {
       },
       responseType: "json"
     }).then(function(data) {
-      ctrl.list.push({
+      ctrl.postClicked = {
         id : data.data.id,
         title : post.title,
         body: post.body,
-        userId : 1
-      })
+        userId : post.userId
+      };
+      ctrl.list.push(ctrl.postClicked)
+      $scope.hidden = false;
+      $scope.isNewPost = false;
       // ctrl.listComment = data.data;
     });
   }
   ctrl.saveComment = function(comment){
-    console.log(comment);
     $http({
       url: "https://jsonplaceholder.typicode.com/comments/",
       method: "POST",
       body: JSON.stringify({
         body: comment.body,
         name: comment.name,
-        userId : 1,
+        userId : comment.userId,
         postId : ctrl.postClicked.id
       }),
       headers: {
@@ -103,7 +115,7 @@ function PostListController($scope, $element, $attrs, $http) {
         id : data.data.id,
         name : comment.name,
         body: comment.body,
-        userId : 1,
+        email : comment.email,
         postId : ctrl.postClicked.id
       })
       $scope.isNewComment = false;

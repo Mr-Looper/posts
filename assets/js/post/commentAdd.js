@@ -8,6 +8,7 @@ function EditableFieldController($scope, $element, $attrs, $http) {
 
   ctrl.handleModeChange = function() {
     if (ctrl.editMode) {
+      ctrl.fieldValue.value.userId = ctrl.userSelected;
       ctrl.onUpdatecomment(ctrl.fieldValue);
       ctrl.fieldValueCopy = ctrl.fieldValue;  
     }else{
@@ -26,6 +27,12 @@ function EditableFieldController($scope, $element, $attrs, $http) {
       ctrl.fieldType = 'text';
     }
   };
+  ctrl.getUser = function(idUser){
+    console.log(idUser);
+    if(idUser != undefined){
+      return ctrl.users.filter(({id}) => id == idUser)[0].username;
+    }
+  };
 
   ctrl.reset = function() {
     ctrl.fieldValue.value.name =  $scope.name;
@@ -37,6 +44,7 @@ function EditableFieldController($scope, $element, $attrs, $http) {
     ctrl.onDeletecomment(ctrl.fieldValue.value);
   }
   ctrl.onSave = function(){
+    ctrl.newValuecomment.value.userId = ctrl.userSelected;
     ctrl.onSavecomment(ctrl.newValuecomment.value);
   }
 }
@@ -45,6 +53,7 @@ angular.module('postApp').component('editableField', {
   templateUrl: 'assets/templates/editItem.html',
   controller: EditableFieldController,
   bindings: {
+    users: '=',
     fieldValue: '<',
     fieldType: '@?',
     onUpdatecomment: '&',
@@ -55,6 +64,7 @@ angular.module('postApp').component('newComment', {
   templateUrl: 'assets/templates/addComment.html',
   controller: EditableFieldController,
   bindings: {
+    users: '=',
     newValuecomment: '<', 
     fieldType: '@?',
     onSavecomment: '&'

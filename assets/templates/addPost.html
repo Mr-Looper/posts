@@ -1,10 +1,14 @@
 <div class="card text-white bg-secondary mb-3"  style="cursor: pointer" >
 	<div class="card-header">
+	    <label for="repeatSelect"> User: </label>
+	    <select name="repeatSelect"  class="browser-default custom-select" id="repeatSelect" ng-model="$ctrl.userSelected">
+		  <option ng-repeat="user in $ctrl.users" value="{{user.id}}">{{user.username}}</option>
+	    </select>
+	</div>
+  <div class="card-body">
 	    <div class="form-group" >
 		    <input class="card-title form-control" type="text" ng-model="$ctrl.newValue.value.title">
 		</div>
-	</div>
-  <div class="card-body">
 	  <div class="form-group">
 	    <textarea class="form-control" rows="3" type="text" ng-model="$ctrl.newValue.value.body"></textarea>
 	  </div>

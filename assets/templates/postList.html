@@ -7,18 +7,18 @@
 				<button class="btn btn-success" ng-class="{ 'hidden' : (hidden || isNewPost) }" style="float: right; margin-right: 10px" ng-click="$ctrl.addComment()">Answer</button>
 			</h3>
 			</div>
-		<post-detail ng-repeat="post in $ctrl.list" post="post" on-click="$ctrl.showBody(post)" on-delete="$ctrl.deletePost(post)" on-update="$ctrl.updatePost(post, prop, value)"></post-detail>
+		<post-detail ng-repeat="post in $ctrl.list" post="post" users="$ctrl.listUsers" on-click="$ctrl.showBody(post)" on-delete="$ctrl.deletePost(post)" on-update="$ctrl.updatePost(post, prop, value)"></post-detail>
 	</div>
 	<div class="col-xs-6 col-lg-8 full-height" id="comments" style="padding-top: 20px;">
 		<div class="col-xs-12">
-			<new-post ng-class="{ 'hidden' : !isNewPost }" new-value="{ value: $ctrl.newPost }" new-type="text" on-savepost="$ctrl.savePost($ctrl.newPost)"></new-post>
+			<new-post ng-class="{ 'hidden' : !isNewPost }" new-value="{ value: $ctrl.newPost }"  users="$ctrl.listUsers" new-type="text" on-savepost="$ctrl.savePost($ctrl.newPost)"></new-post>
 
-			<editable-post field-value="{ value: $ctrl.postClicked }" field-type="text" on-updatepost="$ctrl.updatePost($ctrl.postClicked)" on-deletepost="$ctrl.deletePost($ctrl.postClicked)"></editable-post>
+			<editable-post field-value="{ value: $ctrl.postClicked }"  users="$ctrl.listUsers" field-type="text" on-updatepost="$ctrl.updatePost($ctrl.postClicked)" on-deletepost="$ctrl.deletePost($ctrl.postClicked)"></editable-post>
 		</div>
 		<b ng-class="{ 'hidden' : (hidden || isNewPost) }">Comments</b><br>
 
-		<new-comment ng-class="{ 'hidden' : !isNewComment }" new-valuecomment="{ value: $ctrl.newComment }" new-type="text" on-savecomment="$ctrl.saveComment($ctrl.newComment)"></new-comment>
+		<new-comment ng-class="{ 'hidden' : !isNewComment }"  users="$ctrl.listUsers" new-valuecomment="{ value: $ctrl.newComment }" new-type="text" on-savecomment="$ctrl.saveComment($ctrl.newComment)"></new-comment>
 
-		<post-comment ng-repeat="comment in $ctrl.listComment" comment="comment" on-deletecomment="$ctrl.deleteComment(comment)" on-updatecomment="$ctrl.updateComment(comment)"></post-comment>
+		<post-comment ng-repeat="comment in $ctrl.listComment"  users="$ctrl.listUsers" comment="comment" on-deletecomment="$ctrl.deleteComment(comment)" on-updatecomment="$ctrl.updateComment(comment)"></post-comment>
 	</div>
 </div>

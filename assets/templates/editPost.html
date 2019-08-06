@@ -1,11 +1,12 @@
 <div class="card text-white bg-secondary mb-3" ng-class="{ 'hidden' : !$ctrl.fieldValue.value.title }"  style="cursor: pointer" ng-switch="$ctrl.editMode">
 	<div class="card-header">
+		By {{$ctrl.getUser($ctrl.fieldValue.value.userId)}}
+	</div>
+  <div class="card-body">
 	    <div class="form-group" ng-switch-when="true" >
 		    <input class="card-title form-control" type="text" ng-model="$ctrl.fieldValue.value.title">
 		</div>
 		<h5 class="card-title" ng-switch-default>{{$ctrl.fieldValue.value.title}}</h5>
-	</div>
-  <div class="card-body">
     
 	  <div class="form-group">
 	    <textarea class="form-control" rows="3" ng-switch-when="true" type="text" ng-model="$ctrl.fieldValue.value.body"></textarea>
